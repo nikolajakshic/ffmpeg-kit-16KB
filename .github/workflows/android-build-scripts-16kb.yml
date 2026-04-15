@@ -43,11 +43,11 @@ jobs:
         run: ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --uninstall "cmake;3.10.2.4988404" "cmake;3.18.1"
       - name: set up android ndk r25 (16k support)
         run: |
-          curl -L -s "https://storage.googleapis.com/android-build/builds/aosp-ndk-release-r23-linux-linux/12186248/38c84da1ab0dd31ea40c857d2c9ee77450d9d71d76e60ac2ccd33d379babc534/android-ndk-12186248-linux-x86_64.zip?GoogleAccessId=gcs-sign%40android-builds-project.google.com.iam.gserviceaccount.com&Expires=1757434143&Signature=oK1FSeU9JpfoBkEqBZk%2FVmTH%2B1JJ09Dlv%2BsXblxpBTBq1kBA%2B42UPzbBpb%2BNy%2BIliEoWd2lO9Xbc92Lmzl1CiDyFwtzsxYE11nwUNNVWsjLvc0K0SO1%2F8j4p8b8eo5Zq5gc%2Bq7SamsrgelSUDSJfcYkDNR%2BE%2FyRpJgvtOqra%2FmEjw85pDrFMXFjZrSikYGjy%2Fl4E8TJRr%2BKh1BBkTEY5Oxvx3ia53LEzKE9bKKpFmFjZ9iXp%2BHh5ZSFPYZPrTMAeROSHlKARwvW35Bqgr%2FIyKHkSLKOk5%2FcbDud5iQwjuIB0l3MQTtkYr2TeDRh2BNzM82Z8MOwUfoncAI6nfj2%2Few%3D%3D" -o ndk.zip
+          curl -L -s "https://storage.googleapis.com/android-build/builds/aosp-ndk-release-r23-linux-linux/12186248/38c84da1ab0dd31ea40c857d2c9ee77450d9d71d76e60ac2ccd33d379babc534/android-ndk-12186248-linux-x86_64.zip?GoogleAccessId=gcs-sign%40android-builds-project.google.com.iam.gserviceaccount.com&Expires=1776277573&Signature=GZIBANg0JAL3yBDlAsLij9hBNTuN%2FThE0Yn%2BX8KbGVPjYiROO8OviDKqlstSyJ2ZnoMzHIQZQZYF4sohkDhhhbzKGBvo5GaHPXf60RO8pJaGu5Z7C3yh2AfABAz69SWSSYCne1LfxawlAR9rNuilpQkTJlpk5vib3jsYmvrbM5m5tSR6d08cR8dLYhT539tIBNm4UHQdqayC3gQH5e9LVFxsK7V0LcXBl08mAD%2FbvLM7kjT3%2FbMTtHAU%2BTzzMRALBxaP0no2gbKQt3OYVKGKxIFWMbz%2BX7%2BCwkmeVqCZGamhR2FtsgEvzakQjTKQO3Kx4NkEcso%2FUBhizniaDLCEfA%3D%3D" -o ndk.zip
           unzip -q -o ndk.zip -d .ndk
           echo "ANDROID_NDK_ROOT=$PWD/.ndk/$(ls .ndk)" >> $GITHUB_ENV
       - name: run the build script
-        run: ./android.sh -d --full --enable-gpl --disable-arm-v7a
+        run: ./android.sh -d --full --enable-gpl
       - name: prepare and upload main aar
         run: |
           AAR_PATH=$(find prebuilt -type f -name 'ffmpeg-kit.aar')
@@ -85,11 +85,11 @@ jobs:
         run: ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --uninstall "cmake;3.10.2.4988404" "cmake;3.18.1"
       - name: set up android ndk r25 (16k support)
         run: |
-          curl -L -s "https://storage.googleapis.com/android-build/builds/aosp-ndk-release-r23-linux-linux/12186248/38c84da1ab0dd31ea40c857d2c9ee77450d9d71d76e60ac2ccd33d379babc534/android-ndk-12186248-linux-x86_64.zip?GoogleAccessId=gcs-sign%40android-builds-project.google.com.iam.gserviceaccount.com&Expires=1757434143&Signature=oK1FSeU9JpfoBkEqBZk%2FVmTH%2B1JJ09Dlv%2BsXblxpBTBq1kBA%2B42UPzbBpb%2BNy%2BIliEoWd2lO9Xbc92Lmzl1CiDyFwtzsxYE11nwUNNVWsjLvc0K0SO1%2F8j4p8b8eo5Zq5gc%2Bq7SamsrgelSUDSJfcYkDNR%2BE%2FyRpJgvtOqra%2FmEjw85pDrFMXFjZrSikYGjy%2Fl4E8TJRr%2BKh1BBkTEY5Oxvx3ia53LEzKE9bKKpFmFjZ9iXp%2BHh5ZSFPYZPrTMAeROSHlKARwvW35Bqgr%2FIyKHkSLKOk5%2FcbDud5iQwjuIB0l3MQTtkYr2TeDRh2BNzM82Z8MOwUfoncAI6nfj2%2Few%3D%3D" -o ndk.zip
+          curl -L -s "https://storage.googleapis.com/android-build/builds/aosp-ndk-release-r23-linux-linux/12186248/38c84da1ab0dd31ea40c857d2c9ee77450d9d71d76e60ac2ccd33d379babc534/android-ndk-12186248-linux-x86_64.zip?GoogleAccessId=gcs-sign%40android-builds-project.google.com.iam.gserviceaccount.com&Expires=1776277573&Signature=GZIBANg0JAL3yBDlAsLij9hBNTuN%2FThE0Yn%2BX8KbGVPjYiROO8OviDKqlstSyJ2ZnoMzHIQZQZYF4sohkDhhhbzKGBvo5GaHPXf60RO8pJaGu5Z7C3yh2AfABAz69SWSSYCne1LfxawlAR9rNuilpQkTJlpk5vib3jsYmvrbM5m5tSR6d08cR8dLYhT539tIBNm4UHQdqayC3gQH5e9LVFxsK7V0LcXBl08mAD%2FbvLM7kjT3%2FbMTtHAU%2BTzzMRALBxaP0no2gbKQt3OYVKGKxIFWMbz%2BX7%2BCwkmeVqCZGamhR2FtsgEvzakQjTKQO3Kx4NkEcso%2FUBhizniaDLCEfA%3D%3D" -o ndk.zip
           unzip -q -o ndk.zip -d .ndk
           echo "ANDROID_NDK_ROOT=$PWD/.ndk/$(ls .ndk)" >> $GITHUB_ENV
       - name: run the build script
-        run: ./android.sh -d --lts --full --enable-gpl --disable-arm-v7a
+        run: ./android.sh -d --lts --full --enable-gpl
       - name: prepare and upload lts aar
         run: |
           AAR_PATH=$(find prebuilt -type f -name 'ffmpeg-kit.aar')
